@@ -455,7 +455,7 @@ function pokemonLabel(name, rarity, types, disappear_time, id, latitude, longitu
       <b>${name}</b>
       <span> - </span>
       <small>
-        <a href='http://www.pokemon.com/us/pokedex/${id}' target='_blank' title='View in Pokedex'>#${id}</a>
+        <a href='http://www.dereferer.org?www.pokemon.com%2Eus%2Epokedex%2E${id}' target='_blank' title='View in Pokedex'>#${id}</a>
       </small>
       <span> ${rarity_display}</span>
       <span> - </span>
@@ -555,7 +555,7 @@ function pokestopLabel(lured, last_modified, active_pokemon_id, latitude, longit
         Lured Pokémon: ${active_pokemon_name}
         <span> - </span>
         <small>
-          <a href='http://www.pokemon.com/us/pokedex/${active_pokemon_id}' target='_blank' title='View in Pokedex'>#${active_pokemon_id}</a>
+          <a href='http://www.dereferer.org?www.pokemon.com%2Eus%2Epokedex%2E${active_pokemon_id}' target='_blank' title='View in Pokedex'>#${active_pokemon_id}</a>
         </small>
         <span> ${rarity_display}</span>
         <span> - </span>
