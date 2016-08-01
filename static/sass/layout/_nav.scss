@@ -2,7 +2,6 @@
 
 	#nav {
 		@include vendor('transform', 'translateX(-18em)');
-		@include vendor('transition', ('transform #{_duration(nav)} ease', 'box-shadow #{_duration(nav)} ease', 'visibility #{_duration(nav)}'));
 		-webkit-overflow-scrolling: touch;
 		background: #F8F8F8;
 		box-shadow: none;

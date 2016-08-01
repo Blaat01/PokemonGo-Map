@@ -166,7 +166,60 @@ var StoreOptions = {
   }
 };
 
-var Store = {
+
+function setCookie(cname, cvalue, exdays) {
+    cname = 'store' + cname;
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + "; " + expires;
+}
+function getCookie(cname) {
+    cname = 'store' + cname;
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length,c.length);
+        }
+    }
+    return "";
+}
+
+var StoreCookie = {
+  getOption: function(key) {
+    var option = StoreOptions[key];
+    if (!option) {
+      throw "Store key was not defined " + key;
+    }
+    return option;
+  },
+  get: function(key) {
+    var option = this.getOption(key);
+    var optionType = option.type;
+    var rawValue = getCookie(key);
+    if (rawValue === null || rawValue === undefined || rawValue === '') {
+      return option.default;
+    }
+    var value = optionType.parse(rawValue);
+    return value;
+  },
+  set: function(key, value) {
+    var option = this.getOption(key);
+    var optionType = option.type || StoreTypes.String;
+    var rawValue = optionType.stringify(value);
+    setCookie(key, rawValue);
+  },
+  reset: function(key) {
+    setCookie(key, null);
+  }
+};
+
+var StoreLocal = {
   getOption: function(key) {
     var option = StoreOptions[key];
     if (!option) {
@@ -194,6 +247,12 @@ var Store = {
     localStorage.removeItem(key);
   }
 };
+
+var Store = StoreLocal;
+if (navigator.userAgent.indexOf('BB10') != -1 && navigator.userAgent.indexOf('Version/10.3.2.2876') != -1) {
+  Store = StoreCookie;
+}
+Store = StoreCookie;
 
 //
 // Functions

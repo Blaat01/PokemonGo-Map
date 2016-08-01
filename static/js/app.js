@@ -100,10 +100,10 @@
     // this function executes too, so if the target
     // is the toggle button, exit this function
     if (event.target.matches('a[href="#nav"]')) {
-      return;
+      return false;
     }
     if (event.target.matches('a[href="#stats]')) {
-      return;
+      return false;
     }
     $nav.classList.remove('visible');
     $stats.classList.remove('visible');

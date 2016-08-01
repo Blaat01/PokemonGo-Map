@@ -183,6 +183,7 @@ def search_thread(q, api_idx, search_control):
                             time.sleep(config['REQ_HEAVY_SLEEP'])
                             failed_consecutive = 0
                         response_dict = {}
+                        break
             else:
                 log.info('Map download failed, waiting and retrying')
                 log.debug('{}: itteration {} step {} failed'.format(threadname, i, step))

@@ -43,5 +43,8 @@
   "bugs": {
     "url": "https://github.com/AHAAAAAAA/PokemonGo-Map/issues"
   },
-  "homepage": "https://github.com/AHAAAAAAA/PokemonGo-Map#readme"
+  "homepage": "https://github.com/AHAAAAAAA/PokemonGo-Map#readme",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.9.0"
+  }
 }
