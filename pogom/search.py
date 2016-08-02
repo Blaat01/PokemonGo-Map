@@ -13,6 +13,7 @@ Search Architecture:
 '''
 
 import logging
+import random
 import time
 import math
 import threading
@@ -187,9 +188,9 @@ def search_thread(q, api_idx, search_control):
             else:
                 log.info('Map download failed, waiting and retrying')
                 log.debug('{}: itteration {} step {} failed'.format(threadname, i, step))
-                time.sleep(config['REQ_SLEEP'])
+                time.sleep(random.uniform(config['REQ_SLEEP_MIN'], config['REQ_SLEEP_MAX']))
 
-        time.sleep(config['REQ_SLEEP'])
+        time.sleep(random.uniform(config['REQ_SLEEP_MIN'], config['REQ_SLEEP_MAX']))
         q.task_done()
 
 
