@@ -168,14 +168,14 @@ var StoreOptions = {
 
 
 function setCookie(cname, cvalue, exdays) {
-    cname = 'store' + cname;
+    cname = cname;
     var d = new Date();
     d.setTime(d.getTime() + (exdays*24*60*60*1000));
     var expires = "expires="+ d.toUTCString();
     document.cookie = cname + "=" + cvalue + "; " + expires;
 }
 function getCookie(cname) {
-    cname = 'store' + cname;
+    cname = cname;
     var name = cname + "=";
     var ca = document.cookie.split(';');
     for(var i = 0; i <ca.length; i++) {
@@ -252,7 +252,6 @@ var Store = StoreLocal;
 if (navigator.userAgent.indexOf('BB10') != -1 && navigator.userAgent.indexOf('Version/10.3.2.2876') != -1) {
   Store = StoreCookie;
 }
-Store = StoreCookie;
 
 //
 // Functions
