@@ -110,12 +110,14 @@ class Pokemon(BaseModel):
             query = (Pokemon
                      .select()
                      .where((Pokemon.pokemon_id << ids) &
+                            (Pokemon.disappear_time <= datetime.utcnow() + timedelta(hours=1)) &
                             (Pokemon.disappear_time > datetime.utcnow()))
                      .dicts())
         else:
             query = (Pokemon
                      .select()
                      .where((Pokemon.pokemon_id << ids) &
+                            (Pokemon.disappear_time <= datetime.utcnow() + timedelta(hours=1)) &
                             (Pokemon.disappear_time > datetime.utcnow()) &
                             (Pokemon.latitude >= swLat) &
                             (Pokemon.longitude >= swLng) &
