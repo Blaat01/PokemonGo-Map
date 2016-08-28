@@ -291,7 +291,7 @@ def get_encryption_lib_path():
     elif sys.platform == "darwin":
         lib_path = os.path.join(os.path.dirname(__file__), "libencrypt-osx.so")
     elif sys.platform.startswith('linux'):
-        lib_path = os.path.join(os.path.dirname(__file__), "libencrypt.so")
+        lib_path = os.path.join(os.path.dirname(__file__), "nas/libencrypt.so")
     else:
         err = "Unexpected/unsupported platform '{}'".format(sys.platform)
         log.error(err)
